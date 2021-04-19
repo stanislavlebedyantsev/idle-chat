@@ -1,0 +1,40 @@
+{
+  "messages": [
+    {
+      "role": "sent",
+      "text": "1",
+      "photo": null,
+      "date": 0
+    },
+    {
+      "role": "sent",
+      "text": "2",
+			"photo": null,
+      "date": 0
+    },
+    {
+      "role": "recived",
+      "text": "r1",
+			"photo": null,
+      "date": 0
+    },
+    {
+      "role": "sent",
+      "text": "3",
+			"photo": null,
+      "date": 0
+    },
+    {
+      "role": "recived",
+      "text": "r2",
+			"photo": null,
+      "date": 0
+    },
+    {
+      "role": "recived",
+      "text": "r3",
+			"photo": null,
+      "date": 0
+    }
+  ]
+}

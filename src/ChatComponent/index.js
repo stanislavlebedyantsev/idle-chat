@@ -2,14 +2,14 @@ import React from 'react';
 import {View} from 'react-native';
 
 import InputMessageComponent from '@/InputMessageComponent';
-import MessageComponent from '@/MessagesComponent';
+import MessagesComponent from '@/MessagesComponent';
 
 import styles from './styles';
 
 const ChatComponent = () => {
   return (
     <View style={styles.root}>
-      <MessageComponent />
+      <MessagesComponent />
       <InputMessageComponent />
     </View>
   );

@@ -1,40 +1,37 @@
-import React from 'react';
-import {ScrollView, View, Text} from 'react-native';
+import React, {useRef} from 'react';
+import {ScrollView, View} from 'react-native';
 import {useSelector} from 'react-redux';
+import MessageComponent from '@/MessageComponent';
 import moment from 'moment';
 
 import styles from './styles';
 
-const MessageComponent = () => {
-  const sentMessages = useSelector(state => state.messages.sentMessages);
+const MessagesComponent = () => {
+  const messages = useSelector(state => state.messages);
+  const scrollRef = useRef();
 
   const generateUniqueKey = pre => {
     return `${pre}_${moment().unix()}`;
   };
 
+  const handleContentSizeChange = () => {
+    return scrollRef.current.scrollToEnd({animated: true});
+  };
+
   return (
     <View style={styles.root}>
-      <ScrollView>
-        <View style={styles.rootScrollView}>
-          <View style={styles.recivedMessages}>
-            {sentMessages.map(element => (
-              <Text style={styles.recivedMessageText} key={generateUniqueKey(element)}>
-                {element}
-              </Text>
-            ))}
-          </View>
-
-          <View style={styles.sentMessages}>
-            {sentMessages.map(element => (
-              <Text style={styles.sentMessageText} key={generateUniqueKey(element)}>
-                {element}
-              </Text>
-            ))}
-          </View>
+      <ScrollView ref={scrollRef} onContentSizeChange={handleContentSizeChange}>
+        <View>
+          {messages.map(element => (
+            <MessageComponent
+              message={element}
+              key={generateUniqueKey(element.text || element.photo.uri)}
+            />
+          ))}
         </View>
       </ScrollView>
     </View>
   );
 };
 
-export default MessageComponent;
+export default MessagesComponent;
